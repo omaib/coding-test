@@ -40,8 +40,8 @@ class SmallCNNFeature(nn.Module):
 
     def output_size(self):
         return self._out_features
-    
-    
+
+
 class SignalVAEEncoder(nn.Module):
     """
     SignalVAEEncoder encodes 1D signals into a latent representation suitable for variational autoencoders (VAE).
@@ -84,8 +84,8 @@ class SignalVAEEncoder(nn.Module):
         mean = self.fc_mu(x)
         log_var = self.fc_log_var(x)
         return mean, log_var
-    
-    
+
+
 class ProteinCNN(nn.Module):
     """
     A protein feature extractor using Convolutional Neural Networks (CNNs).

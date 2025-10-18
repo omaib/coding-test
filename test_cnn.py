@@ -1,4 +1,5 @@
 import torch
+
 from cnn import (
     ImageVAEEncoder,
     LeNet,
