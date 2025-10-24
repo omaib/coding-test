@@ -2,63 +2,58 @@
 
 ## Background
 
-The current `cnn.py` module defines multiple CNN variants that share similar initialization logic, layers, and utility methods. This duplication makes it harder to maintain or extend the module consistently.
+The current `cnn.py` defines multiple CNN models that share similar initialisation logic, layers, and utility methods.
+This duplication makes the codebase harder to maintain and extend consistently.
 
 ## Objective
 
-Create a reusable `BaseCNN` class that captures the shared behaviour across the existing CNN models and update every class in `cnn.py` to inherit from this new base while preserving their public APIs.
+Refactor `cnn.py` by introducing a reusable `BaseCNN` class that captures shared functionality across CNN variants.
+Each CNN model should inherit from this base while preserving its current behaviour and public API.
+This task evaluates your ability to design for **reusability** and **clarity**.
 
 ## Key Requirements
 
-- Highlight reusability by centralising shared CNN functionality in `BaseCNN` and removing duplicated code from subclasses.
-- Ensure each existing CNN class subclasses `BaseCNN` and only overrides or extends what is unique to that architecture.
-- Keep backwards compatibility: constructor signatures, expected inputs/outputs, and module-level exports must remain unchanged for downstream users.
-- Add inline documentation or docstrings clarifying the responsibilities of `BaseCNN` and any overridden methods.
-- Update or add unit tests to cover the refactored structure, demonstrating that existing behaviours remain intact.
+- **Reusability**: Move the shared CNN logic into a new `BaseCNN`. Remove duplicate code from subclasses.
+- **Inheritance**: Each CNN model should inherit from `BaseCNN`, overriding only model-specific parts.
+- **Compatibility**: Existing APIs, inputs/outputs, and model behaviour must remain unchanged.
+- **Documentation**: Add short docstrings for `BaseCNN` and any overridden models.
+- **Testing**: Ensure all tests pass or update `test_cnn.py` to confirm identical behaviour.
 
 ## Suggested Steps
 
-1. Audit the current classes in `cnn.py` to map shared logic versus model-specific differences.
-2. Sketch the `BaseCNN` interface (initialiser arguments, required abstract methods).
-3. Introduce `BaseCNN`, migrate shared code into it, and adapt the concrete subclasses.
-4. Run the project’s test suite (or targeted CNN tests) to confirm the refactor has not changed behaviour.
-   - Execute `pre-commit run --all-files` to enforce formatting and linting.
-   - Execute `pytest` (or the targeted CNN suite) to verify runtime correctness.
+1. Review CNN classes in `cnn.py` and identify shared logic.
+2. Define the `BaseCNN` class.
+3. Implement `BaseCNN` and refactor existing CNNs to inherit from it.
+4. Run tests to confirm correctness.
 
 ## Environment Setup
 
-### Create a Python Environment and Install Required Packages
+1. **Create a Python 3.12 environment** using any tool you prefer, such as:
+   - Conda: `conda create -n omaib python=3.12 && conda activate omaib`
+   - venv: `python3.12 -m venv .venv && source .venv/bin/activate`
 
-Choose one of the following approaches before running checks:
-
-- **Virtualenv**
-  1. `python3.12 -m venv .venv`
-  2. `source .venv/bin/activate` (Linux/macOS) or `.venv\Scripts\activate` (Windows)
-  3. `pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu` (adjust URL for CUDA if needed)
-  4. `pip install pre-commit pytest`
-
-- **Conda**
-  1. `conda create -n omaib python=3.12`
-  2. `conda activate omaib`
-  3. `pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu` (adjust for CUDA if needed)
-  4. `pip install pre-commit pytest`
-
-- **uv**
-  1. `uv venv`
-  2. `source .venv/bin/activate` (uv reuses `.venv`)
-  3. `uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu`
-  4. `uv pip install pre-commit pytest`
-
-### Run `pre-commit` and `pytest`
+2. **Install required packages:**
+   - PyTorch and Torchvision: Adjust `index-url` parameter for CUDA if needed
+      ```bash
+      pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+      ```
+   - Pre-commit and PyTest:
+      ```bash
+      pip install pre-commit pytest
+      ```
+## Run `pre-commit` and `pytest`
 
 Under the root of the repository:
 
-1. `pre-commit install` (if not already done)
-2. `pre-commit run --all-files`
-3. `pytest`
+1. Execute `pre-commit install` to initialise pre-commit (if not already done)
+2. Execute `pre-commit run --all-files` to test formatting
+3. Execute `pytest` to verify functional correctness
 
-## Acceptance Criteria
+## Submission
 
-- All CNN classes in `cnn.py` derive from `BaseCNN`, with shared code consolidated in the base class.
-- Repository quality checks succeed: `pre-commit run --all-files` and `pytest`.
-- Documentation (code comments or module docstring) clearly explains the new hierarchy.
+Before submitting your solution:
+
+1. Clean your code, by removing unused files, debug prints, and temporary artefacts.
+2. Ensure all tests and lint checks pass.
+3. Compress your project folder into a single `.zip` file.
+4. Upload the archive via the provided Google Form [link].
