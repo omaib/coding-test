@@ -1,15 +1,12 @@
-# Refactor Task: Introduce `BaseCNN` in `cnn.py`
-
-## Background
-
-The current `cnn.py` defines multiple CNN models that share similar initialisation logic, layers, and utility methods.
-This duplication makes the codebase harder to maintain and extend consistently.
+# Refactor Task: Introduce `BaseCNN` in `cnn.py` and Refactor Existing CNN Classes
 
 ## Objective
 
-Refactor `cnn.py` by introducing a reusable `BaseCNN` class that captures shared functionality across CNN variants.
-Each CNN model should inherit from this base class while preserving its current behaviour and public API.
-This task evaluates your ability to design for **reusability**, **efficiency** and **clarity**.
+The current `cnn.py` implements multiple CNN classes that share similar initialisation logic, layers, and utility methods. Your task is to introduce a reusable `BaseCNN` class that captures shared functionality across the CNN variants, and refactor the remaining classes to enhance code maintainability and reduce redundancy.
+
+Each existing CNN class should inherit from BaseCNN while preserving its current behaviour and public API.
+
+This task assesses your ability to design for **reusability**, **efficiency** and **clarity**, as well as apply good software engineering practices: using pre-commit hooks and writing effective tests.
 
 ## Key Requirements
 
@@ -34,15 +31,35 @@ This task evaluates your ability to design for **reusability**, **efficiency** a
 
 2. **Install required packages:**
    - PyTorch and Torchvision (adjust the `index-url` parameter if you wish to use a GPU build):
+  
       ```bash
       pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
       ```
+
    - Pre-commit and pytest:
+
       ```bash
       pip install pre-commit pytest
       ```
-## Validate code quality and tests
-From the root of the repository:
-1. Execute `pre-commit install` to set up pre-commit (only required once).
-2. Execute `pre-commit run --all-files` to check code style and formatting.
-3. Execute `pytest` to verify functional correctness.
+
+## Validate Code Quality and Tests
+
+From the root of the repository, run the following commands in your terminal:
+
+1. Install pre-commit hooks (only required once):
+
+   ```bash
+   pre-commit install
+   ```
+
+2. Run pre-commit checks for code style and formatting on all files:
+
+   ```bash
+   pre-commit run --all-files
+   ```
+
+3. Run tests cases to verify functionality:
+
+   ```bash
+   pytest
+   ```
