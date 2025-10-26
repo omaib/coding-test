@@ -33,3 +33,13 @@ jobs:
           pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
       - name: Run tests
         run: pytest
+
+      - name: Determine coverage
+        run: |
+          coverage xml
+        shell: bash -l {0}
+
+      - name: Report coverage
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -31,7 +31,7 @@ This task assesses your ability to design for **reusability**, **efficiency** an
 
 2. **Install required packages:**
    - PyTorch and Torchvision (adjust the `index-url` parameter if you wish to use a GPU build):
-  
+
       ```bash
       pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
       ```
