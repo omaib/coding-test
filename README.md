@@ -1,5 +1,10 @@
 # Refactor Task: Introduce `BaseCNN` in `cnn.py` and Refactor Existing CNN Classes
 
+[![tests](https://github.com/omaib/coding-test/workflows/test/badge.svg)](https://github.com/omaib/coding-test/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/omaib/coding-test/branch/main/graph/badge.svg)](https://codecov.io/gh/omaib/coding-test)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/omaib/coding-test/blob/main/LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org)
+
 ## Objective
 
 The current `cnn.py` implements multiple CNN classes that share similar initialisation logic, layers, and utility methods. Your task is to introduce a reusable `BaseCNN` class that captures shared functionality across the CNN variants, and refactor the remaining classes to enhance code maintainability and reduce redundancy.
